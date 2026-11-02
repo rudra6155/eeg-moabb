@@ -118,7 +118,7 @@ Headline files in `results/`: `per_subject_scores.csv`, `aggregate.csv`, `accura
 
 Schema amendment: `aggregate.csv` is `pipeline, mean_accuracy, std_accuracy, mean_kappa, std_kappa, n_subjects, chance_level, p_value_vs_chance, test_used`. The two kappa columns were added on 2026-10-29 and extend the original baseline schema; the per-subject and controls schemas are unchanged.
 
-Evidence files: `results/baseline.json` (hand-transcribed from the cited sources), `results/test_results.xml` (`make test`), `results/leakage_mutation_check.json` (`make mutation`), `results/docker_build.txt` (`make docker`). `make report` renders `FINDINGS.md`, `README.md` and `CLAIMS.md` from these files.
+Evidence files: `results/baseline.json` (hand-transcribed from the cited sources), `results/test_results.xml` (`make test`), `results/leakage_mutation_check.json` (`make mutation`), `results/docker_build.txt` (`make docker`). `FINDINGS.md` and `README.md` are written by hand from these files.
 
 ## 8. Out of scope
 

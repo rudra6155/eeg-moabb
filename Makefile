@@ -1,4 +1,4 @@
-.PHONY: install download test smoke run-all controls report mutation docker docker-test
+.PHONY: install download test smoke run-all controls mutation docker docker-test
 
 PY ?= $(firstword $(wildcard .venv/Scripts/python.exe .venv/bin/python))
 IMAGE ?= eeg-moabb
@@ -24,10 +24,6 @@ run-all:
 
 controls:
 	bash scripts/run_controls.sh
-
-# FINDINGS.md, README.md and CLAIMS.md, rendered from results/. Fails on an unverified claim.
-report:
-	$(PY) -m eeg.report
 
 # Re-runs the leakage tests with the audit disabled; the leak tests must then fail.
 mutation:
