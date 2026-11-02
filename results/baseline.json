@@ -1,0 +1,49 @@
+{
+  "_note": "Transcribed by hand from the sources below on 2026-10-29. Quotes are verbatim. The paper was read in full text via Europe PMC (PMC3396284); the dataset description was read from the PDF at the competition site. Nothing here is computed.",
+  "citation": "Tangermann M, Muller KR, Aertsen A, Birbaumer N, Braun C, Brunner C, Leeb R, Mehring C, Miller KJ, Muller-Putz GR, Nolte G, Pfurtscheller G, Preissl H, Schalk G, Schlogl A, Vidaurre C, Waldert S, Blankertz B. Review of the BCI Competition IV. Frontiers in Neuroscience 6:55 (2012).",
+  "doi": "10.3389/fnins.2012.00055",
+  "paper_url": "https://www.frontiersin.org/articles/10.3389/fnins.2012.00055/full",
+  "fulltext_used": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3396284/fullTextXML",
+  "dataset_description_url": "https://www.bbci.de/competition/iv/desc_2a.pdf",
+  "dataset": "BCI Competition IV data set 2a (BNCI2014_001)",
+  "metric": "Cohen's kappa (chance level kappa = 0)",
+  "reported": {
+    "table": "Table 3 (Data Set 2a). Contributions with final result (kappa).",
+    "entries": [
+      {"contributor": "K. K. Ang", "kappa": 0.57, "note": "winner; filter bank common spatial pattern (FBCSP), Ang et al. (2012)"},
+      {"contributor": "L. Guangquan", "kappa": 0.52},
+      {"contributor": "W. Song", "kappa": 0.31},
+      {"contributor": "D. Coyle", "kappa": 0.30},
+      {"contributor": "J. Wu", "kappa": 0.29}
+    ],
+    "headline_kappa": 0.57,
+    "headline_contributor": "K. K. Ang",
+    "per_subject_kappa_for_2a": "not reported in the paper. Table 4 is for data set 2b."
+  },
+  "quotes": {
+    "result": "The performance measure kappa was 0.57 averaged over all nine subjects. The other four submissions attained kappa values of 0.52, 0.31, 0.30, and 0.29 and thus were well above chance level of κ = 0.",
+    "scoring_paper": "A confusion matrix was then built from all artifact-free trials for each time point. From these confusion matrices, the time course of the accuracy as well as the kappa coefficient was obtained (Schlögl et al., 2007b). The chance level was at κ = 0. The algorithm used for this evaluation was provided in BioSig. The algorithm achieving the largest kappa value was declared the winner.",
+    "scoring_description": "Participants should provide a continuous classification output for each sample in the form of class labels (1, 2, 3, 4), including labeled trials and trials marked as artifact. A confusion matrix will then be built from all artifact-free trials for each time point. From these confusion matrices, the time course of the accuracy as well as the kappa coefficient will be obtained [5]. The algorithm used for this evaluation will be provided in BioSig. The winner is the algorithm with the largest kappa value X.KAP00.",
+    "sessions": "only one session contains the class labels for all trials, whereas the other session will be used to test the classifier and hence to evaluate the performance.",
+    "causality": "All algorithms must be causal, meaning that the classification output at time k may only depend on the current and past samples xk, xk−1, . . . , x0.",
+    "eog": "Since three EOG channels are provided, it is required to remove EOG artifacts before the subsequent data processing using artifact removal techniques such as highpass filtering or linear regression [4]."
+  },
+  "protocol": {
+    "training_session": "A0xT.gdf (labelled). MOABB name: 0train",
+    "evaluation_session": "A0xE.gdf (labels withheld during the competition). MOABB name: 1test",
+    "n_classes": 4,
+    "scored_on": "artifact-free trials only",
+    "output": "a continuous class label for every sample, scored at every time point",
+    "causal": true,
+    "artifact_removal": "EOG artifact removal required inside the submitted algorithm",
+    "reduction_of_kappa_time_course_to_one_number": "not stated in either source; the description names the field X.KAP00 without defining it"
+  },
+  "differences_to_this_project": [
+    "This project makes one prediction per trial from a fixed 4 s window after the cue (non-causal: it uses the whole window); the competition scored a causal, per-sample output at every time point.",
+    "The sources do not say how the competition's kappa time course became one number, so the two kappas are not known to measure the same quantity.",
+    "The competition scored artifact-free trials only; this project keeps artifact-flagged trials (MOABB artifact_handling='ignore').",
+    "The competition required EOG artifact removal inside the algorithm; this project does none.",
+    "This project applies a fixed 8-32 Hz band-pass and two fixed pipelines with no tuning; the winner used a filter bank CSP with its own tuned design.",
+    "Kappa here is (accuracy - 0.25) / 0.75 of the pooled single-window predictions, which equals Cohen's kappa for balanced true classes."
+  ]
+}

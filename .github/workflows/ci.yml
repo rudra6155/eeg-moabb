@@ -1,0 +1,44 @@
+name: ci
+
+# Push and pull requests run `make test`. The dataset is about 1.5 GB, so it is not downloaded
+# on every push: the job restores a cache, and the tests that need data skip if it is empty.
+# Run this workflow by hand with "download" ticked to fetch the dataset and fill the cache;
+# later pushes then run the data-dependent tests (including the label-shuffle gate) for real.
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      download:
+        description: "Download the dataset (about 1.5 GB) and save it to the cache"
+        type: boolean
+        default: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+
+      - name: Restore dataset cache
+        id: dataset
+        uses: actions/cache@v4
+        with:
+          path: data
+          key: bnci2014-001-moabb-1.7.2
+
+      - name: Install
+        run: make install
+
+      - name: Download dataset (manual runs only)
+        if: github.event_name == 'workflow_dispatch' && inputs.download && steps.dataset.outputs.cache-hit != 'true'
+        run: make download
+
+      - name: Test
+        run: make test
+
+      - name: Leakage audit mutation check
+        run: make mutation

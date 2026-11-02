@@ -1,0 +1,23 @@
+{
+  "audit_disabled": true,
+  "leak_tests_total": 8,
+  "leak_tests_failed_as_required": 8,
+  "clean_tests_total": 5,
+  "clean_tests_passed": 5,
+  "outcomes": {
+    "test_real_splits_pass_the_audit[run_grouped]": "passed",
+    "test_real_splits_pass_the_audit[cross_session]": "passed",
+    "test_real_pipelines_pass_end_to_end[csp_lda]": "passed",
+    "test_real_pipelines_pass_end_to_end[riemann_ts_lr]": "passed",
+    "test_random_trial_split_is_caught": "failed",
+    "test_run_leaking_into_train_is_caught": "failed",
+    "test_shared_index_is_caught": "failed",
+    "test_dropped_fold_is_caught": "failed",
+    "test_mixed_subjects_are_caught": "failed",
+    "test_scaler_fitted_on_all_data_is_caught": "failed",
+    "test_csp_fitted_on_test_trials_with_matching_row_count_is_caught": "failed",
+    "test_watcher_is_transparent_and_restores_the_classes": "passed",
+    "test_check_refuses_to_pass_when_nothing_was_fitted": "failed"
+  },
+  "ok": true
+}

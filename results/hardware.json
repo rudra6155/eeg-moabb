@@ -1,0 +1,35 @@
+{
+  "python": "3.12.13",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "machine": "AMD64",
+  "processor": "AMD64 Family 25 Model 68 Stepping 1, AuthenticAMD",
+  "cpu_count": 16,
+  "seed": 42,
+  "versions": {
+    "moabb": "1.7.2",
+    "mne": "1.13.2",
+    "pyriemann": "0.12",
+    "scikit-learn": "1.9.1",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "pandas": "3.1.0"
+  },
+  "configs": {
+    "csp_lda": {
+      "n_components": 4,
+      "reg": null,
+      "log": true,
+      "norm_trace": false,
+      "lda_solver": "svd",
+      "shrinkage": null
+    },
+    "riemann_ts_lr": {
+      "cov_estimator": "oas",
+      "metric": "riemann",
+      "C": 1.0,
+      "solver": "lbfgs",
+      "max_iter": 1000,
+      "seed": 42
+    }
+  }
+}

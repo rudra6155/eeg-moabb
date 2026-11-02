@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "eeg-moabb"
+version = "0.1.0"
+description = "Subject-wise EEG decoding benchmark on BNCI2014_001 via MOABB, with a leakage audit and negative controls."
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    "moabb==1.7.2",
+    "mne==1.13.2",
+    "pyriemann==0.12",
+    "scikit-learn==1.9.1",
+    "numpy==2.5.4",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3.5"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --durations=5"
+filterwarnings = ["ignore:Montage name:FutureWarning"]

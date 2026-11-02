@@ -1,0 +1,3 @@
+pipeline,mean_accuracy,std_accuracy,mean_kappa,std_kappa,n_subjects,chance_level,p_value_vs_chance,test_used
+csp_lda,0.5513117283950618,0.13708439067036915,0.4017489711934157,0.1827791875604922,9,0.25,0.00390625,exact one-sided sign-flip permutation test on subject-level accuracy minus chance
+riemann_ts_lr,0.6697530864197532,0.11789516837498464,0.5596707818930041,0.15719355783331285,9,0.25,0.001953125,exact one-sided sign-flip permutation test on subject-level accuracy minus chance
